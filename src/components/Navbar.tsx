@@ -10,7 +10,6 @@ export default function Navbar() {
   const navs = [
     { label: 'GENERATE', path: '/' },
     { label: 'BATTLE', path: '/battle' },
-    { label: 'RANKING', path: '/leaderboard' },
   ];
 
   return (

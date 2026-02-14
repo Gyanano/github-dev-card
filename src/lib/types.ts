@@ -46,16 +46,6 @@ export interface DevCard {
   createdAt: string;
 }
 
-export interface LeaderboardEntry {
-  username: string;
-  avatarUrl: string;
-  name: string;
-  rank: string;
-  totalPower: number;
-  stats: DevStats;
-  updatedAt: string;
-}
-
 export interface BattleResult {
   winner: string;
   loser: string;

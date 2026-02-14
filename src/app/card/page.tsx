@@ -77,12 +77,6 @@ function CardContent() {
             <div className="absolute inset-0 bg-red-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-[-1]" />
             Initiate Combat
           </button>
-          <button
-            onClick={() => router.push('/leaderboard')}
-            className="px-8 py-3 bg-white/5 border border-white/20 text-white font-bold uppercase tracking-wider hover:bg-white/10 transition-colors"
-          >
-            Ranking
-          </button>
         </motion.div>
       </div>
     </main>
