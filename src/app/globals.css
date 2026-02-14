@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+:root {
+  --bg-void: #030014;
+  --bg-panel: #0f0c29;
+  --primary-cyan: #00f3ff;
+  --primary-magenta: #bc13fe;
+  --primary-yellow: #facc15;
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  --grid-color: rgba(118, 59, 255, 0.15);
+}
+
+body {
+  background-color: var(--bg-void);
+  color: var(--text-main);
+  font-family: 'Rajdhani', 'Segoe UI', system-ui, sans-serif; /* Fallback to system if Rajdhani isn't loaded, but intended style is tech */
+  overflow-x: hidden;
+  background-image: 
+    linear-gradient(rgba(15, 12, 41, 0.9), rgba(3, 0, 20, 0.95)),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a2a5a' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--bg-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #301e67;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-magenta);
+}
+
+/* Utility: Cyber Borders */
+.cyber-border {
+  position: relative;
+  clip-path: polygon(
+    10px 0, 100% 0, 
+    100% calc(100% - 10px), calc(100% - 10px) 100%, 
+    0 100%, 0 10px
+  );
+}
+
+.cyber-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, var(--primary-cyan), transparent 40%, transparent 60%, var(--primary-magenta));
+  z-index: -1;
+  margin: -1px; /* Border width */
+  clip-path: polygon(
+    10px 0, 100% 0, 
+    100% calc(100% - 10px), calc(100% - 10px) 100%, 
+    0 100%, 0 10px
+  );
+}
+
+/* Text Glitch Effect */
+@keyframes glitch-skew {
+  0% { transform: skew(0deg); }
+  20% { transform: skew(-2deg); }
+  40% { transform: skew(2deg); }
+  60% { transform: skew(-1deg); }
+  80% { transform: skew(1deg); }
+  100% { transform: skew(0deg); }
+}
+
+.text-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.text-glitch::before,
+.text-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text-glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 var(--primary-cyan);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.text-glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 var(--primary-magenta);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(38px, 9999px, 81px, 0); }
+  20% { clip: rect(6px, 9999px, 14px, 0); }
+  40% { clip: rect(56px, 9999px, 28px, 0); }
+  60% { clip: rect(22px, 9999px, 63px, 0); }
+  80% { clip: rect(74px, 9999px, 49px, 0); }
+  100% { clip: rect(11px, 9999px, 95px, 0); }
+}
+
+@keyframes glitch-anim2 {
+  0% { clip: rect(2px, 9999px, 68px, 0); }
+  20% { clip: rect(89px, 9999px, 34px, 0); }
+  40% { clip: rect(33px, 9999px, 6px, 0); }
+  60% { clip: rect(55px, 9999px, 92px, 0); }
+  80% { clip: rect(12px, 9999px, 25px, 0); }
+  100% { clip: rect(66px, 9999px, 5px, 0); }
+}
+
+/* Holographic Card Shimmer */
+.holo-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 200%;
+}
+
+/* Neon Glows */
+.neon-text-cyan {
+  text-shadow: 0 0 5px var(--primary-cyan), 0 0 10px var(--primary-cyan);
+}
+.neon-text-magenta {
+  text-shadow: 0 0 5px var(--primary-magenta), 0 0 10px var(--primary-magenta);
+}
+
+/* Grid Background Animation */
+.bg-grid-moving {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+}
+
+/* Rank Colors */
+.rank-S { color: #facc15; text-shadow: 0 0 15px #facc15; }
+.rank-A { color: #bc13fe; text-shadow: 0 0 15px #bc13fe; }
+.rank-B { color: #00f3ff; text-shadow: 0 0 15px #00f3ff; }
+.rank-C { color: #4ade80; text-shadow: 0 0 15px #4ade80; }
+.rank-D { color: #94a3b8; text-shadow: 0 0 15px #94a3b8; }
